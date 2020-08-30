@@ -140,7 +140,7 @@
         //    退出登入
         $('#logout').click(function() {
             console.log(111);
-            $.post('../login/logout', function(res){
+            $.post('logout', function(res){
                 console.log(res);
                 if(res.flag) {
                     window.location = logoutLayer;
