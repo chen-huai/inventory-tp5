@@ -1,0 +1,75 @@
+{layout name="layout"}
+  <!-- banner部分 -->
+<div class="banner index">
+    <div class="layui-carousel" id="banner">
+      <div carousel-item>
+        <div>
+          <img src="__STATIC__/img/banner1.jpg">
+        </div>
+        <div>
+          <img src="__STATIC__/img/banner2.jpg">
+        </div>
+      </div>
+      <div class="query">
+      	<div class="query-content">
+          <form class="layui-form" action="../Supplierproduct/queryresult" method="get">
+          	<div class="layui-form-item">
+					    <label class="layui-form-label">Country</label>
+					    <div class="layui-input-block">
+					      <select name="country" lay-search>
+                  <option value=""></option>
+                    {foreach $country as $item}
+                      <option value="{$item['country']}">{$item['country']}</option>
+                    {/foreach}
+					      </select>
+					    </div>
+					  </div>
+					  <div class="layui-form-item">
+					    <label class="layui-form-label">Supplier Name</label>
+					    <div class="layui-input-block">
+                <input type="text" name="supplierName" id="supplierName" class="layui-input" placeholder="Supplier Name">
+					    </div>
+					  </div>
+					  <div class="layui-form-item">
+					    <label class="layui-form-label">Product Name</label>
+					    <div class="layui-input-block">
+                <input type="text" name="productName" id="productName" class="layui-input" placeholder="Product Name">
+					    </div>
+					  </div>
+					  <div class="layui-form-item">
+					    <label class="layui-form-label">Product Type</label>
+					    <div class="layui-input-block">
+					      <select name="productType" lay-filter="productType" lay-search>
+                  <option value=""></option>
+					        {foreach $productType as $item}
+                    <option value="{$item['productType']}">{$item['productType']}</option>
+                  {/foreach}
+					      </select>
+					    </div>
+					  </div>
+					  <div class="layui-form-item">
+					    <label class="layui-form-label">Style No.</label>
+					    <div class="layui-input-block">
+                <input type="text" name="productStyle" id="productStyle" class="layui-input" placeholder="Style No.">
+					    </div>
+					  </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">Verification No.</label>
+              <div class="layui-input-block">
+                <input type="text" name="verifyNo" id="verifyNo" class="layui-input" placeholder="Example: RCVSXM20190001">
+              </div>
+            </div>
+					  <div class="layui-form-item">
+					  	<button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">Search</button>
+					  </div>
+					</form>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+  layui.config({
+    base: '__STATIC__/js/' 
+  }).use('firm'); 
+</script>
