@@ -3,6 +3,10 @@
 
 namespace app\admin\controller;
 
+
+
+use app\admin\validate\User as loginVi;
+use app\admin\modle\User;
 use think\Controller;
 use think\Session;
 
@@ -42,21 +46,11 @@ class Login extends Controller
                 'msg' => $msg
             ));
         };
-        //验证是否符合规则
-//        try {
-//            validate(loginVi::class)->check(
-//                $user
-//            );
-//        } catch (ValidateException $e) {
-//             return json(array(
-//                 'flag' => $flag,
-//                 'msg' => $msg = $e->getError()
-//             ));
-//        }
+
 
         // 查询结果判断
         $userInfo = User::where('username',$data['username'])->select();
-        $power = User::find($userInfo['0']['id'])->permissions;
+        $menu = User::find($userInfo['0']['id'])->permissions;
 
         if(!empty($userInfo) && ( $userInfo[0]['password'] == $data['password'])) {
             // session_start();
@@ -64,7 +58,7 @@ class Login extends Controller
             // $_SESSION['approver'] = !empty($userInfo['ApproveDep']);
             Session::set('username', $data['username']);
             Session::set('id', $userInfo['0']['id']);
-            Session::set('power',$power);
+            Session::set('menu',$menu);
             Session::set('toggle', true);
             $flag = true;
         } else {

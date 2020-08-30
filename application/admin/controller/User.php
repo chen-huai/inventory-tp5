@@ -4,17 +4,17 @@
 namespace app\admin\controller;
 
 
-use think\facade\Session;
-use think\facade\View;
 
 
+use app\admin\controller\Base;
+use think\Session;
 class User extends Base
 {
 
     public function index()
     {
         $power = Session::get('power');
-//        View::assign('power', $power);
-        return View::fetch('index',['power' => $power]);
+        $this->assign('power', $power);
+        return $this->fetch();
     }
 }

@@ -1,18 +1,15 @@
 <?php
-/**
- * User: Frank
- * Date: 2020/02/10
- */
+
+
 namespace app\admin\controller;
-use think\Controller;
+
+
 use app\admin\modle\Permissions;
 use app\admin\modle\User;
 use app\admin\modle\UserPermissionsRelationship;
-use app\validate\User as loginVi;
-use think\Db;
-
-
-class Index extends Controller
+use app\admin\validate\User as loginVi;
+//测试用
+class Index
 {
     public function index()
     {
@@ -44,11 +41,8 @@ class Index extends Controller
     }
     public function search()
     {
-//        $res = Db::table('inventory_user')
-//            ->select();
-//        return json($res);
-        return json(User::select());
-        return json(User::select(2)->UserPermissionsRelationship);
+
+       return json(User::find(2)->UserPermissionsRelationship);
     }
     public function searchMany()
     {
@@ -80,7 +74,7 @@ class Index extends Controller
     }
     public function sessionTest()
     {
-        $res = session('power');
+        $res = session('menu');
         if($res){
             foreach ($res as $r){
                 dump($r['permissionsName']);
@@ -88,5 +82,7 @@ class Index extends Controller
         }else{
             return json('session已清空');
         }
-}
+
+    }
+
 }

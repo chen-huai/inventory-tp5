@@ -1,7 +1,7 @@
 <?php
-declare (strict_types = 1);
 
-namespace app\validate;
+
+namespace app\admin\validate;
 
 use think\Validate;
 

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace app\validate;
+namespace app\admin\validate;
 
 
 

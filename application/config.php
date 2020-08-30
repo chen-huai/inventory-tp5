@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2006~2018 http://thinkphp.cn All rights reserved.
+// | Copyright (c) 2006~2016 http://thinkphp.cn All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -14,6 +14,8 @@ return [
     // | 应用设置
     // +----------------------------------------------------------------------
 
+    // 应用命名空间
+    'app_namespace'          => 'app',
     // 应用调试模式
     'app_debug'              => true,
     // 应用Trace
@@ -54,7 +56,7 @@ return [
     // +----------------------------------------------------------------------
 
     // 默认模块名
-    'default_module'         => 'index',
+    'default_module'         => 'home',
     // 禁止访问模块
     'deny_module_list'       => ['common'],
     // 默认控制器名
@@ -92,8 +94,6 @@ return [
     'route_complete_match'   => false,
     // 路由配置文件（支持配置多个）
     'route_config_file'      => ['route'],
-    // 是否开启路由解析缓存
-    'route_check_cache'      => false,
     // 是否强制使用路由
     'url_route_must'         => false,
     // 域名部署
@@ -106,16 +106,6 @@ return [
     'url_controller_layer'   => 'controller',
     // 表单请求类型伪装变量
     'var_method'             => '_method',
-    // 表单ajax伪装变量
-    'var_ajax'               => '_ajax',
-    // 表单pjax伪装变量
-    'var_pjax'               => '_pjax',
-    // 是否开启请求缓存 true自动缓存 支持设置请求缓存规则
-    'request_cache'          => false,
-    // 请求缓存有效期
-    'request_cache_expire'   => null,
-    // 全局请求缓存排除规则
-    'request_cache_except'   => [],
 
     // +----------------------------------------------------------------------
     // | 模板设置
@@ -124,8 +114,6 @@ return [
     'template'               => [
         // 模板引擎类型 支持 php think 支持扩展
         'type'         => 'Think',
-        // 默认模板渲染规则 1 解析为小写+下划线 2 全部转换小写
-        'auto_rule'    => 1,
         // 模板路径
         'view_path'    => '',
         // 模板后缀
@@ -143,9 +131,7 @@ return [
     ],
 
     // 视图输出字符串内容替换
-    'view_replace_str'       => [
-        '__STATIC__' => '../../../static'
-    ],
+    'view_replace_str'       => [],
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
     'dispatch_error_tmpl'    => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
@@ -216,6 +202,22 @@ return [
         'auto_start'     => true,
     ],
 
+    // auth配置
+    'auth'    => [
+        // 权限开关
+        'auth_on'           => 1,
+        // 认证方式，1为实时认证；2为登录认证。
+        'auth_type'         => 1,
+        // 用户组数据不带前缀表名
+        'auth_group'        => 'auth_group',
+        // 用户-用户组关系不带前缀表
+        'auth_group_access' => 'auth_group_access',  
+        // 权限规则不带前缀表
+        'auth_rule'         => 'auth_rule',
+        // 用户信息不带前缀表
+        'auth_user'         => 'admin_user',
+    ],
+
     // +----------------------------------------------------------------------
     // | Cookie设置
     // +----------------------------------------------------------------------
@@ -243,4 +245,6 @@ return [
         'list_rows' => 15,
     ],
 
+    /*资源路径*/
+    "__STATIC__"   => "/public/static",
 ];
