@@ -50,9 +50,11 @@ class Login extends Controller
 
         // 查询结果判断
         $userInfo = User::where('username',$data['username'])->select();
-        $menu = User::find($userInfo['0']['id'])->permissions;
+
+
 
         if(!empty($userInfo) && ( $userInfo[0]['password'] == $data['password'])) {
+            $menu = User::find($userInfo['0']['id'])->permissions;
             // session_start();
             // $_SESSION['username'] = $username;
             // $_SESSION['approver'] = !empty($userInfo['ApproveDep']);
@@ -61,6 +63,7 @@ class Login extends Controller
             Session::set('menu',$menu);
             Session::set('toggle', true);
             $flag = true;
+            $msg = '登录成功';
         } else {
             $msg = '用户名或密码错误';
         }

@@ -107,9 +107,10 @@
                     $('#username').val('');
                     $('#password').val('');
                     return layer.msg(res.msg);
+                }else{
+                    window.location = userLayer;
+                    return layer.msg(res.msg);
                 };
-                window.location = userLayer;
-
             })
             return false;
         });

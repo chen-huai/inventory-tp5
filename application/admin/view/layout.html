@@ -47,8 +47,9 @@
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             {foreach $menu as $item}
-            {if condition = "$item['permissionsName'] eq '人员管理'"}
+
             <ul class="layui-nav layui-nav-tree site-demo-nav">
+                {if condition = "$item['permissionsName'] eq '人员管理'"}
                 <li class="layui-nav-item layui-nav-itemed" >
                     <a class="javascript:;" href="javascript:;"><i class="layui-icon layui-icon-username"></i>人员管理</a>
                     <dl class="layui-nav-child">
@@ -102,7 +103,7 @@
             , layedit = layui.layedit
             , table = layui.table
             , layer = layui.layer;
-        const logoutLayer = '../login/login';
+        const logoutLayer = '/';
 
         var active = {
             tabAdd: function () {

@@ -16,7 +16,7 @@ class Base extends Controller
     public function _initialize()
     {
         if (!session('username')) {
-            $this->error('请先登录系统', 'login/login');
+            $this->error('请先登录系统', '/');
         }else {
             $menu = session('menu');
             $this->assign('menu', $menu);
