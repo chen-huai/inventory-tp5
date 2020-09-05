@@ -65,8 +65,7 @@
                         <dd class=""><a href="../../admin/supplier/userlist">商品管理</a></dd>
                     </dl>
                 </li>
-                {/if}
-                {/foreach}
+                {elseif condition = "$item['permissionsName'] eq '仓库管理'"}
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="javascript:;" href="javascript:;"><i class="layui-icon layui-icon-list"></i>仓库管理</a>
                     <dl class="layui-nav-child">
@@ -75,6 +74,8 @@
                         <dd class=""><a href="../../admin/supplierproduct/userlist">盘点</a></dd>
                     </dl>
                 </li>
+                {/if}
+                {/foreach}
             </ul>
         </div>
     </div>
