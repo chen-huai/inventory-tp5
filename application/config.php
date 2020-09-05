@@ -247,4 +247,5 @@ return [
 
     /*资源路径*/
     "__STATIC__"   => "/public/static",
+    "__QRCODE__"   => "/public/erweima",
 ];
